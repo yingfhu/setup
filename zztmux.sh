@@ -26,7 +26,11 @@ tar xf downloads/$FILE -C src/$NAME --strip-components 1
 
 cd src/$NAME
 
-./configure --prefix="$ROOTDIR"
+export CFLAGS="-I$ROOTDIR/include -I$ROOTDIR/include/ncursesw"
+export CPPFLAGS="-I$ROOTDIR/include -I$ROOTDIR/include/ncursesw"
+export LDFLAGS="-L$ROOTDIR/lib"
+
+./configure --prefix="$ROOTDIR" PKG_CONFIG_PATH=${ROOTDIR}/lib/pkgconfig 
 make -j"$(nproc)" && make install
 
 echo $NAME installed on "$ROOTDIR"
