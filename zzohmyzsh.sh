@@ -33,7 +33,7 @@ set -e
 
 # Default settings
 ZSH=${ZSH:-~/.oh-my-zsh}
-REPO=${REPO:-robbyrussell/oh-my-zsh}
+REPO=${REPO:-ohmyzsh/ohmyzsh.git}
 REMOTE=${REMOTE:-git@github.com:${REPO}}
 BRANCH=${BRANCH:-master}
 
@@ -90,7 +90,7 @@ setup_ohmyzsh() {
 		exit 1
 	fi
 
-	git clone --depth=1 --branch "$BRANCH" "$REMOTE" "$ZSH" || {
+	git clone --depth=1 --branch "$BRANCH" https://github.com/ohmyzsh/ohmyzsh.git "$ZSH" || {
 		error "git clone of oh-my-zsh repo failed"
 		exit 1
 	}
